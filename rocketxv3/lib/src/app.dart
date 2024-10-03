@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:rocketxv3/src/login_screen/login-view.dart';
+import 'package:rocketxv3/src/registration_screen/registration-view.dart';
+import 'package:rocketxv3/src/splash_screen/splash-screen-view.dart';
 
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       listenable: settingsController,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
@@ -69,11 +71,17 @@ class MyApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
+                  // case SampleItemDetailsView.routeName:
+                  //   return const SampleItemDetailsView();
+                  // case SampleItemListView.routeName:
+                  case '/splash':
+                    return SplashScreen();
+                   case '/login':
+                    return LoginView();
+                   case '/register':
+                   return RegistrationView();
                   default:
-                    return const SampleItemListView();
+                    return SplashScreen();
                 }
               },
             );
