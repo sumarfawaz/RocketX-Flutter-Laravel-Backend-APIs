@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:rocketxv3/src/login_screen/login-view.dart';
 import 'package:rocketxv3/src/registration_screen/registration-view.dart';
 import 'package:rocketxv3/src/splash_screen/splash-screen-view.dart';
+import 'package:rocketxv3/src/view-tickets/view-tickets.dart';
 
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
@@ -80,6 +81,8 @@ class MyApp extends StatelessWidget {
                     return LoginView();
                    case '/register':
                    return RegistrationView();
+                   case '/view-tickets':
+                    return ViewTickets();
                   default:
                     return SplashScreen();
                 }
