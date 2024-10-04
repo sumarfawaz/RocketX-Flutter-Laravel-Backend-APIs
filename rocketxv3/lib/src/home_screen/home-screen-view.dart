@@ -157,12 +157,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  @override
-  void dispose() {
-    _scrollTimer?.cancel(); // Cancel the auto-scroll timer
-    _scrollController.dispose(); // Dispose the scroll controller
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _scrollTimer?.cancel(); // Cancel the auto-scroll timer
+  //   _scrollController.dispose(); // Dispose the scroll controller
+  //   super.dispose();
+  // }
 
   // Function to get the appropriate image for the rocket
   String getRocketImage(String rocketName) {
@@ -404,15 +404,20 @@ class _HomeScreenState extends State<HomeScreen> {
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildWeatherColumn('Avg Temp', '${weatherData!['AT']['av']} °C'),
-            _buildWeatherColumn('Max Temp', '${weatherData!['AT']['mx']} °C'),
-            _buildWeatherColumn(
-                'Avg Wind Speed', '${weatherData!['HWS']['av']} m/s'),
-            _buildWeatherColumn('Season', weatherData!['Season']),
-          ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal, // Enable horizontal scrolling
+          child: Row(
+            children: [
+              _buildWeatherColumn('Avg Temp', '${weatherData!['AT']['av']} °C'),
+              const SizedBox(width: 16), // Spacing between weather items
+              _buildWeatherColumn('Max Temp', '${weatherData!['AT']['mx']} °C'),
+              const SizedBox(width: 16), // Spacing between weather items
+              _buildWeatherColumn(
+                  'Avg Wind Speed', '${weatherData!['HWS']['av']} m/s'),
+              const SizedBox(width: 16), // Spacing between weather items
+              _buildWeatherColumn('Season', weatherData!['Season']),
+            ],
+          ),
         ),
       ),
     );

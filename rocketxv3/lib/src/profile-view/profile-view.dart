@@ -127,8 +127,6 @@ class _ProfileViewState extends State<ProfileView> {
                         decoration: InputDecoration(
                           labelText: 'E-Passport ID',
                           border: OutlineInputBorder(),
-                          filled: true,
-                          fillColor: Colors.grey[200],
                         ),
                         enabled: false, // Disable editing
                       ),
@@ -138,8 +136,6 @@ class _ProfileViewState extends State<ProfileView> {
                         decoration: InputDecoration(
                           labelText: 'Phone Number',
                           border: OutlineInputBorder(),
-                          filled: true,
-                          fillColor: Colors.grey[200],
                         ),
                         enabled: false, // Disable editing
                       ),
@@ -149,8 +145,6 @@ class _ProfileViewState extends State<ProfileView> {
                         decoration: InputDecoration(
                           labelText: 'Email',
                           border: OutlineInputBorder(),
-                          filled: true,
-                          fillColor: Colors.grey[200],
                         ),
                         enabled: false, // Disable editing
                       ),
@@ -168,8 +162,6 @@ class _ProfileViewState extends State<ProfileView> {
                           decoration: InputDecoration(
                             labelText: 'First Name',
                             border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[200],
                           ),
                           onChanged: (value) => firstName = value,
                           validator: (value) {
@@ -185,8 +177,6 @@ class _ProfileViewState extends State<ProfileView> {
                           decoration: InputDecoration(
                             labelText: 'Last Name',
                             border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[200],
                           ),
                           onChanged: (value) => lastName = value,
                           validator: (value) {
@@ -202,8 +192,6 @@ class _ProfileViewState extends State<ProfileView> {
                           decoration: InputDecoration(
                             labelText: 'Age',
                             border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[200],
                           ),
                           onChanged: (value) => age = value,
                           validator: (value) {
@@ -219,8 +207,6 @@ class _ProfileViewState extends State<ProfileView> {
                           decoration: InputDecoration(
                             labelText: 'Occupation',
                             border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[200],
                           ),
                           onChanged: (value) => occupation = value,
                           validator: (value) {
@@ -236,8 +222,6 @@ class _ProfileViewState extends State<ProfileView> {
                           decoration: InputDecoration(
                             labelText: 'Nationality',
                             border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[200],
                           ),
                           onChanged: (value) => nationality = value,
                           validator: (value) {

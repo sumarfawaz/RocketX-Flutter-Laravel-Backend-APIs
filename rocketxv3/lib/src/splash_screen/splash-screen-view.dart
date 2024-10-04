@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rocketxv3/src/home_screen/home-screen-navigation-view.dart';
 import 'package:rocketxv3/src/login_screen/login-view.dart';
-import 'package:rocketxv3/src/registration_screen/registration-view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:rocketxv3/src/home_screen/home-screen-view.dart';
-// Import your LoginScreen accordingly
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,15 +12,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  String _connectionStatus = 'Checking connectivity...';
+
   @override
   void initState() {
     super.initState();
     _checkLoginStatus();
+    _checkNetworkConnectivity();
   }
 
   Future<void> _checkLoginStatus() async {
-    // Wait for 15 seconds (your existing splash screen delay)
-    await Future.delayed(const Duration(seconds: 3));
+    // Wait for 3 seconds (your existing splash screen delay)
+    await Future.delayed(const Duration(seconds: 15));
 
     // Fetch SharedPreferences instance
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -40,6 +41,23 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(builder: (context) => LoginView()),
       );
+    }
+  }
+
+  Future<void> _checkNetworkConnectivity() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile) {
+      setState(() {
+        _connectionStatus = 'Connected to Mobile Network';
+      });
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      setState(() {
+        _connectionStatus = 'Connected to Wi-Fi';
+      });
+    } else {
+      setState(() {
+        _connectionStatus = 'No Internet Connection';
+      });
     }
   }
 
@@ -65,6 +83,12 @@ class _SplashScreenState extends State<SplashScreen> {
                 fontWeight: FontWeight.w500,
               ),
             ),
+            const SizedBox(height: 20),
+            // Display connectivity status
+            // Text(
+            //   _connectionStatus,
+            //   style: TextStyle(fontSize: 20, color: Colors.black),
+            // ),
           ],
         ),
       ),
